@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Paulo Web Store — livraria online com Supabase.">
+<title>Paulo Web Store | Livraria Online</title>
+<style>
+:root{--navy:#14243a;--navy2:#203852;--gold:#d6a84f;--cream:#f7f5ef;--paper:#fff;--ink:#202938;--muted:#738091;--line:#e7e8eb;--green:#247a55;--red:#b74747;--shadow:0 14px 40px #17283a12}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.topbar{background:var(--navy);color:white;padding:13px 5%;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.brand{font-family:Georgia,serif;font-size:27px;font-weight:bold;letter-spacing:.2px;color:white}.brand span{color:var(--gold)}.top-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.topbar button{border:1px solid #ffffff42;background:transparent;color:white;padding:9px 13px;border-radius:9px}.topbar button:hover{background:#ffffff18}.hero{padding:58px 5% 54px;background:linear-gradient(110deg,#14243a 0%,#263e59 70%,#3b5268 100%);color:white;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}.hero h1{font:clamp(36px,5vw,60px)/1.04 Georgia,serif;margin:0 0 16px;max-width:680px}.hero p{color:#d7e0e8;max-width:570px;line-height:1.7;margin:0 0 25px}.hero .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800}.hero-art{min-height:220px;display:flex;align-items:center;justify-content:center;gap:12px;transform:rotate(-3deg)}.book-illustration{height:190px;width:125px;border-radius:5px 10px 10px 5px;box-shadow:12px 16px 22px #0005;display:flex;align-items:center;justify-content:center;text-align:center;padding:15px;font:20px Georgia,serif;color:#fff;border-left:8px solid #ffffff35}.book-illustration:nth-child(1){background:#a95e49;transform:translateY(20px) rotate(-9deg)}.book-illustration:nth-child(2){background:#d0a24d;transform:translateY(-12px);color:#243348}.book-illustration:nth-child(3){background:#416b65;transform:translateY(20px) rotate(9deg)}.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:700;background:var(--navy);color:white}.btn:hover{filter:brightness(1.12)}.btn.gold{background:var(--gold);color:#1c2b3c}.btn.light{background:white;color:var(--navy)}.btn.danger{background:var(--red)}.btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}.btn.small{padding:7px 10px;font-size:13px}.container{max-width:1250px;margin:auto;padding:34px 5% 70px}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;flex-wrap:wrap;margin-bottom:20px}.section-head h2{font:32px Georgia,serif;margin:0 0 6px;color:var(--navy)}.muted{color:var(--muted)}.toolbar{display:flex;gap:10px;flex-wrap:wrap}.field{border:1px solid #dce0e5;background:white;border-radius:9px;padding:11px 12px;min-width:0;color:var(--ink);outline:none}.field:focus{border-color:#9a793c;box-shadow:0 0 0 3px #d6a84f25}.toolbar input{min-width:230px}.catalog{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.book-card{background:white;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 15px #17283a08;display:flex;flex-direction:column}.cover{height:190px;display:flex;align-items:center;justify-content:center;padding:22px;background:linear-gradient(145deg,#e9dfcc,#f8f4eb)}.cover-inner{width:112px;height:155px;border-radius:3px 8px 8px 3px;box-shadow:8px 9px 15px #0002;color:white;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font:18px Georgia,serif;border-left:7px solid #ffffff35}.book-info{padding:15px;display:flex;flex-direction:column;gap:8px;flex:1}.book-info h3{margin:0;font:20px Georgia,serif;color:var(--navy)}.book-info .author{font-size:13px;color:var(--muted)}.book-info .description{font-size:13px;line-height:1.5;color:#596575;min-height:39px}.price-row{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px}.price{font-weight:800;color:var(--green);font-size:18px}.stock{font-size:11px;color:var(--muted)}.book-info .btn{width:100%;margin-top:7px}.empty{grid-column:1/-1;text-align:center;padding:45px 20px;background:white;border:1px dashed #cbd1d8;border-radius:14px;color:var(--muted)}.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:22px;box-shadow:var(--shadow)}.panel h2,.panel h3{margin-top:0;color:var(--navy)}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid .full{grid-column:1/-1}label{display:block;font-size:12px;font-weight:700;color:#586477;margin:0 0 5px}.form-row{margin-bottom:12px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:top}th{color:#687588;font-size:11px;text-transform:uppercase;letter-spacing:.7px}td{color:#334155}.items-cell{font-size:12px;line-height:1.55;white-space:normal;max-width:230px}.tag{display:inline-block;border-radius:20px;background:#edf2f5;padding:4px 8px;font-size:11px;font-weight:700}.tag.admin{background:#fff2d8;color:#88601b}.tag.customer{background:#e5f3eb;color:#246a49}.notice{padding:12px 14px;border-radius:9px;background:#f1f5f8;color:#405166;font-size:13px;line-height:1.5;margin:12px 0}.notice.warn{background:#fff4e5;color:#875c1d}.notice.success{background:#eaf6ef;color:#246a49}.notice.error{background:#fff0f0;color:#a33b3b}.hidden{display:none!important}.modal-backdrop{position:fixed;inset:0;background:#0b1728a8;display:flex;align-items:center;justify-content:center;padding:18px;z-index:20}.modal{background:white;border-radius:16px;padding:25px;width:min(470px,100%);max-height:90vh;overflow:auto;box-shadow:0 20px 70px #0004}.modal.wide{width:min(820px,100%)}.modal h2{font:28px Georgia,serif;color:var(--navy);margin:0 0 8px}.modal .close{float:right;border:0;background:#eef1f4;border-radius:50%;width:32px;height:32px}.cart-line{display:flex;justify-content:space-between;gap:15px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}.cart-line small{display:block;color:var(--muted);margin-top:4px}.cart-total{display:flex;justify-content:space-between;font-weight:800;font-size:19px;padding:17px 0}.footer{background:#101d2e;color:#cbd5df;padding:28px 5%;text-align:center;font-size:12px}.footer strong{font:22px Georgia,serif;color:white}.footer span{color:var(--gold)}.footer a{color:var(--gold);text-decoration:none;cursor:pointer}.footer a:hover{text-decoration:underline}.toast{position:fixed;bottom:22px;right:22px;background:#17283a;color:white;padding:13px 18px;border-radius:10px;box-shadow:var(--shadow);z-index:50;max-width:min(360px,90vw)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tabs button{border:1px solid var(--line);background:white;border-radius:9px;padding:9px 13px;color:#526174}.tabs button.active{background:var(--navy);color:white;border-color:var(--navy)}.accountbar{font-size:12px;color:#dce5ed}.admin-actions{display:flex;gap:6px}pre.sql{background:#0f1a2b;color:#d6e2ee;padding:16px;border-radius:10px;overflow:auto;font-size:12px;line-height:1.55;max-height:55vh}
+/* ===== TEMA ESCURO DO PAINEL ADMIN ===== */
+#adminSection .panel{
+  background:#0e1622;
+  border-color:#1e2c3d;
+  color:#d6e2ee;
+  box-shadow:0 14px 40px #0008;
+}
+#adminSection .panel h2,
+#adminSection .panel h3{ color:#f0d9a8; }
+#adminSection .section-head h2{ color:var(--navy); }
+#adminSection .section-head .muted{ color:#8fa3b8; }
+#adminSection label{ color:#a9bccf; }
+#adminSection .muted{ color:#8fa3b8; }
+#adminSection .notice{
+  background:#16222f;
+  color:#c8d6e3;
+  border:1px solid #1e2c3d;
+}
+
+/* Inputs, selects e textareas dentro do admin */
+#adminSection .field{
+  background:#0a121b;
+  border-color:#243447;
+  color:#e3edf6;
+}
+#adminSection .field:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px #d6a84f33;
+}
+
+/* Tabelas do admin */
+#adminSection table th{
+  color:#8fa3b8;
+  border-bottom-color:#1e2c3d;
+}
+#adminSection table td{
+  color:#d6e2ee;
+  border-bottom-color:#1e2c3d;
+}
+#adminSection table tr:hover td{ background:#101c29; }
+
+/* Abas do admin */
+#adminSection .tabs button{
+  background:#0e1622;
+  border-color:#1e2c3d;
+  color:#a9bccf;
+}
+#adminSection .tabs button:hover{ background:#16222f; }
+#adminSection .tabs button.active{
+  background:var(--gold);
+  color:#1c2b3c;
+  border-color:var(--gold);
+}
+
+/* Botão ghost (Limpar / Editar) no fundo escuro */
+#adminSection .btn.ghost{
+  background:transparent;
+  color:#d6e2ee;
+  border-color:#2a3a4d;
+}
+#adminSection .btn.ghost:hover{ background:#16222f; }
+
+/* Tags dentro do admin */
+#adminSection .tag{
+  background:#16222f;
+  color:#c8d6e3;
+}
+/* ===== MENU DE PERFIL ===== */
+.profile-wrap{position:relative;display:inline-block}
+.profile-btn{
+  display:flex;align-items:center;gap:8px;
+  border:1px solid #ffffff42;background:transparent;color:white;
+  padding:9px 13px;border-radius:9px;cursor:pointer;
+  max-width:240px;
+}
+.profile-btn:hover{background:#ffffff18}
+.profile-btn .p-avatar{
+  width:26px;height:26px;border-radius:50%;
+  background:var(--gold);color:#1c2b3c;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;flex-shrink:0;
+}
+.profile-btn .p-name{
+  font-size:13px;font-weight:600;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.profile-btn .p-caret{font-size:10px;opacity:.8}
+.profile-menu{
+  position:absolute;right:0;top:calc(100% + 8px);
+  background:white;color:var(--ink);
+  border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 14px 40px #17283a33;
+  min-width:210px;padding:6px;z-index:60;
+  display:none;
+}
+.profile-menu.open{display:block}
+.profile-menu .pm-head{
+  padding:10px 12px;border-bottom:1px solid var(--line);
+  margin-bottom:4px;
+}
+.profile-menu .pm-head strong{display:block;font-size:13px;color:var(--navy)}
+.profile-menu .pm-head small{color:var(--muted);font-size:11px;word-break:break-all}
+.profile-menu .pm-role{
+  display:inline-block;margin-top:6px;
+  background:#fff2d8;color:#88601b;
+  font-size:10px;font-weight:800;letter-spacing:.5px;
+  padding:3px 8px;border-radius:10px;text-transform:uppercase;
+}
+.profile-menu button{
+  width:100%;text-align:left;border:0;background:transparent;
+  padding:10px 12px;border-radius:8px;
+  color:var(--ink);font-size:13px;cursor:pointer;
+  display:flex;align-items:center;gap:9px;
+}
+.profile-menu button:hover{background:#f3f5f7}
+.profile-menu button.danger{color:var(--red)}
+.profile-menu button.danger:hover{background:#fff0f0}
+.topbar .profile-btn{padding:6px 12px}
+.topbar .profile-menu button{padding:10px 12px;border-radius:8px;border:0;background:transparent;color:var(--ink)}
+/* ===== ÍCONE FLUTUANTE DO CARRINHO ===== */
+.floating-cart{
+  position:fixed;
+  bottom:24px;
+  left:24px;
+  z-index:40;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--navy);
+  color:white;
+  border:0;
+  border-radius:50px;
+  padding:12px 18px 12px 14px;
+  box-shadow:0 12px 30px #14243a55;
+  transition:transform .2s ease, opacity .25s ease, background .2s ease;
+  opacity:0;
+  transform:translateY(20px) scale(.9);
+  pointer-events:none;
+}
+.floating-cart.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.floating-cart:hover{background:var(--navy2);transform:translateY(-2px) scale(1.03)}
+.floating-cart svg{width:24px;height:24px;flex-shrink:0}
+.floating-cart .fc-label{font-size:13px;font-weight:700;letter-spacing:.2px}
+.floating-cart .fc-badge{
+  min-width:22px;
+  height:22px;
+  padding:0 6px;
+  border-radius:11px;
+  background:var(--gold);
+  color:#1c2b3c;
+  font-size:12px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.floating-cart.pop{animation:fc-pop .35s ease}
+@keyframes fc-pop{
+  0%{transform:translateY(0) scale(1)}
+  40%{transform:translateY(-3px) scale(1.12)}
+  100%{transform:translateY(0) scale(1)}
+}
+@media(max-width:680px){
+  .floating-cart{bottom:18px;left:18px;padding:11px 15px 11px 12px}
+  .floating-cart .fc-label{display:none}
+  .floating-cart svg{width:22px;height:22px}
+}
+@media(max-width:950px){.catalog{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{display:none}}@media(max-width:680px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.cover{height:155px}.cover-inner{height:125px;width:90px;font-size:15px}.book-info{padding:12px}.book-info h3{font-size:17px}.hero{padding-top:42px}.admin-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.container{padding-top:25px}.topbar{padding:12px 4%}.brand{font-size:23px}}@media(max-width:390px){.catalog{grid-template-columns:1fr}.cover{height:180px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Paulo <span>Web Store</span></div>
+  <div class="top-actions">
+    <span id="accountStatus" class="accountbar">Você está navegando como visitante</span>
+    <button id="loginBtn" onclick="openAuth('login')">Entrar</button>
+    <button id="registerBtn" onclick="openAuth('register')">Criar conta</button>
+    <button onclick="openCart()">Carrinho (<span id="cartCount">0</span>)</button>
+
+    <div id="profileWrap" class="profile-wrap hidden">
+      <button class="profile-btn" onclick="toggleProfileMenu(event)" aria-haspopup="true" aria-expanded="false">
+        <span class="p-avatar" id="profileInitial">?</span>
+        <span class="p-name" id="profileName">Usuário</span>
+        <span class="p-caret">▾</span>
+      </button>
+      <div id="profileMenu" class="profile-menu" role="menu">
+        <div class="pm-head">
+          <strong id="pmName">—</strong>
+          <small id="pmEmail">—</small>
+          <span class="pm-role" id="pmRole">Cliente</span>
+        </div>
+        <button onclick="openChangePassword();closeProfileMenu()" role="menuitem">🔒 Alterar senha</button>
+        <button class="danger" onclick="logout()" role="menuitem">↪ Sair</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Conhecimento que chega até você</div>
+    <h1>Uma boa história pode mudar tudo.</h1>
+    <p>Explore nossa seleção de livros, encontre sua próxima leitura e acompanhe seus pedidos em um só lugar.</p>
+    <button class="btn gold" onclick="document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'})">Explorar livros</button>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="book-illustration">O poder das<br>ideias</div>
+    <div class="book-illustration">Novos<br>horizontes</div>
+    <div class="book-illustration">Histórias<br>que ficam</div>
+  </div>
+</section>
+
+<main class="container">
+  <section id="catalogSection">
+    <div class="section-head">
+      <div><h2>Biblioteca em destaque</h2><div class="muted">Encontre livros para aprender, imaginar e descobrir.</div></div>
+      <div class="toolbar">
+        <input id="searchInput" class="field" placeholder="Buscar por título, autor ou categoria..." oninput="renderCatalog()">
+        <select id="categoryFilter" class="field" onchange="renderCatalog()"><option value="">Todas as categorias</option></select>
+      </div>
+    </div>
+    <div id="catalog" class="catalog"></div>
+  </section>
+
+  <section id="myOrdersSection" class="panel hidden" style="margin-top:34px">
+    <h2>Meus pedidos</h2><div id="myOrders"></div>
+  </section>
+
+  <section id="adminSection" class="hidden" style="margin-top:38px">
+    <div class="section-head"><div><h2>Painel administrativo</h2><div class="muted">Gerencie o catálogo, os pedidos, os usuários e a auditoria.</div></div><span class="tag admin">Administrador</span></div>
+    <div class="tabs">
+      <button class="active" data-tab="books" onclick="showAdminTab('books')">Livros</button>
+      <button data-tab="orders" onclick="showAdminTab('orders')">Vendas e pedidos</button>
+      <button data-tab="users" onclick="showAdminTab('users')">Usuários</button>
+      <button data-tab="logs" onclick="showAdminTab('logs')">Auditoria</button>
+    </div>
+    <div id="adminBooks" class="panel">
+      <div class="admin-grid">
+        <div>
+          <h3 id="bookFormTitle">Cadastrar livro</h3>
+          <form id="bookForm" onsubmit="saveBook(event)">
+            <input type="hidden" id="bookId">
+            <div class="form-row"><label for="bookTitle">Título</label><input class="field" id="bookTitle" required maxlength="100" style="width:100%"></div>
+            <div class="form-row"><label for="bookAuthor">Autor</label><input class="field" id="bookAuthor" required maxlength="80" style="width:100%"></div>
+            <div class="form-grid">
+              <div class="form-row"><label for="bookCategory">Categoria</label><input class="field" id="bookCategory" required maxlength="40" style="width:100%"></div>
+              <div class="form-row"><label for="bookPrice">Preço (R$)</label><input class="field" id="bookPrice" type="number" min="0.01" max="99999" step="0.01" required style="width:100%"></div>
+              <div class="form-row"><label for="bookStock">Estoque</label><input class="field" id="bookStock" type="number" min="0" max="100000" step="1" required style="width:100%"></div>
+              <div class="form-row"><label for="bookColor">Cor da capa</label><select class="field" id="bookColor" style="width:100%"><option value="#a95e49">Terracota</option><option value="#416b65">Verde</option><option value="#526b91">Azul</option><option value="#a184b8">Lilás</option><option value="#d0a24d">Dourado</option></select></div>
+            </div>
+            <div class="form-row"><label for="bookDescription">Descrição</label><textarea class="field" id="bookDescription" rows="3" maxlength="250" style="width:100%;resize:vertical"></textarea></div>
+            <button class="btn" type="submit">Salvar livro</button> <button class="btn ghost" type="button" onclick="resetBookForm()">Limpar</button>
+          </form>
+        </div>
+        <div><h3>Catálogo cadastrado</h3><div id="adminBookTable" class="table-wrap"></div></div>
+      </div>
+    </div>
+    <div id="adminOrders" class="panel hidden"><h3>Todos os pedidos</h3><div id="allOrders" class="table-wrap"></div></div>
+    <div id="adminUsers" class="panel hidden"><h3>Usuários cadastrados</h3><div id="allUsers" class="table-wrap"></div></div>
+    <div id="adminLogs" class="panel hidden"><h3>Registro de atividades</h3><div class="notice">Os registros ajudam a identificar quem realizou cada ação e quando ela ocorreu.</div><div id="auditTable" class="table-wrap"></div></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <strong>Paulo <span>Web Store</span></strong>
+  <p>Livros, conhecimento e novas possibilidades.</p>
+  <p>Projeto acadêmico demonstrativo — backend Supabase (Auth + Postgres + RLS).</p>
+  
+</footer>
+<!-- ===== ÍCONE FLUTUANTE DO CARRINHO (canto inferior esquerdo) ===== -->
+<button id="floatingCart" class="floating-cart" onclick="openCart()" aria-label="Abrir carrinho">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="9" cy="21" r="1"></circle>
+    <circle cx="20" cy="21" r="1"></circle>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+  </svg>
+  <span class="fc-label">Carrinho</span>
+  <span class="fc-badge" id="floatingCartCount">0</span>
+</button>
+<div id="modalRoot"></div>
+<div id="toast" class="toast hidden" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+"use strict";
+
+/* ============ CONFIG ============ */
+const SUPABASE_URL = "https://tvsqsnscoarjagqvxugd.supabase.co";
+const SUPABASE_KEY = "sb_publishable_hNSWhXwNGiRtXK5fCnkUAg_NbMSRBh0";
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const $ = id => document.getElementById(id);
+const money = n => Number(n).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const safe  = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+let currentUser = null;
+let cart = {};
+let booksCache = [];
+let toastTimer = null;
+let dbReady = false;
+let lastCartTotal = 0;
+
+/* ============ SQL DE CONFIGURAÇÃO ============ */
+const SETUP_SQL = `-- =========================================================
+-- PAULO WEB STORE — schema completo (v3)
+-- Cole no SQL Editor do Supabase e clique em RUN.
+-- =========================================================
+create extension if not exists "pgcrypto";
+
+create table if not exists public.profiles (
+  id uuid primary key references auth.users(id) on delete cascade,
+  name text not null default 'Cliente',
+  role text not null default 'customer' check (role in ('customer','admin')),
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.books (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  author text not null,
+  category text not null,
+  price numeric(10,2) not null check (price > 0),
+  stock integer not null default 0 check (stock >= 0),
+  color text not null default '#a95e49',
+  description text,
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.orders (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references public.profiles(id) on delete cascade,
+  status text not null default 'Recebido'
+    check (status in ('Recebido','Em preparação','Enviado','Concluído','Cancelado')),
+  total numeric(10,2) not null default 0,
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.order_items (
+  id uuid primary key default gen_random_uuid(),
+  order_id uuid not null references public.orders(id) on delete cascade,
+  book_id uuid not null references public.books(id),
+  quantity integer not null check (quantity > 0),
+  unit_price numeric(10,2) not null
+);
+
+create table if not exists public.audit_logs (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references public.profiles(id) on delete set null,
+  user_email text,
+  role text,
+  action text not null,
+  details text,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists idx_orders_user_id        on public.orders(user_id);
+create index if not exists idx_order_items_order_id  on public.order_items(order_id);
+create index if not exists idx_audit_logs_created_at on public.audit_logs(created_at desc);
+
+alter table public.books drop constraint if exists books_title_key;
+alter table public.books add constraint books_title_key unique (title);
+
+create or replace function public.handle_new_user()
+returns trigger language plpgsql security definer set search_path = public as $$
+begin
+  insert into public.profiles (id, name, role)
+  values (new.id, coalesce(new.raw_user_meta_data ->> 'name','Cliente'), 'customer')
+  on conflict (id) do nothing;
+  return new;
+end;
+$$;
+
+drop trigger if exists on_auth_user_created on auth.users;
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();
+
+create or replace function public.is_admin()
+returns boolean language sql security definer stable set search_path = public as $$
+  select exists (select 1 from public.profiles where id = auth.uid() and role = 'admin');
+$$;
+
+create or replace function public.prevent_role_escalation()
+returns trigger language plpgsql security definer set search_path = public as $$
+begin
+  if old.role is distinct from new.role then
+    if not public.is_admin() then
+      raise exception 'Apenas administradores podem alterar perfis';
+    end if;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_prevent_role_escalation on public.profiles;
+create trigger trg_prevent_role_escalation
+  before update on public.profiles
+  for each row execute procedure public.prevent_role_escalation();
+
+create or replace function public.promote_user_by_id(p_user_id uuid, p_role text)
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Apenas administradores podem alterar perfis'; end if;
+  if p_role not in ('customer','admin') then raise exception 'Perfil inválido'; end if;
+  update public.profiles set role = p_role where id = p_user_id;
+end;
+$$;
+grant execute on function public.promote_user_by_id(uuid, text) to authenticated;
+
+create or replace function public.log_anon_event(p_action text, p_email text, p_details text)
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  if p_action not in ('LOGIN_FALHOU','ACESSO_NEGADO') then raise exception 'Ação não permitida'; end if;
+  insert into public.audit_logs (user_email, role, action, details)
+  values (left(coalesce(p_email,'(desconhecido)'),120), 'anonimo', p_action, left(coalesce(p_details,''),160));
+end;
+$$;
+grant execute on function public.log_anon_event(text, text, text) to anon, authenticated;
+
+create or replace function public.create_order(items jsonb)
+returns uuid language plpgsql security definer set search_path = public as $$
+declare
+  new_order_id uuid;
+  item jsonb;
+  book_row public.books%rowtype;
+  item_qty int;
+  v_total numeric := 0;
+begin
+  if auth.uid() is null then raise exception 'Usuário não autenticado'; end if;
+  if items is null or jsonb_typeof(items) <> 'array' or jsonb_array_length(items) = 0 then
+    raise exception 'Carrinho vazio';
+  end if;
+  insert into public.orders (user_id, total, status)
+  values (auth.uid(), 0, 'Recebido') returning id into new_order_id;
+  for item in select * from jsonb_array_elements(items) loop
+    item_qty := coalesce((item->>'quantity')::int, 0);
+    if item_qty <= 0 then raise exception 'Quantidade inválida'; end if;
+    select * into book_row from public.books where id = (item->>'book_id')::uuid;
+    if not found then raise exception 'Livro não encontrado'; end if;
+    if book_row.stock < item_qty then raise exception 'Estoque insuficiente para %', book_row.title; end if;
+    insert into public.order_items (order_id, book_id, quantity, unit_price)
+    values (new_order_id, book_row.id, item_qty, book_row.price);
+    update public.books set stock = stock - item_qty where id = book_row.id;
+    v_total := v_total + book_row.price * item_qty;
+  end loop;
+  update public.orders set total = v_total where id = new_order_id;
+  return new_order_id;
+end;
+$$;
+grant execute on function public.create_order(jsonb) to authenticated;
+
+create or replace function public.cancel_order(p_order_id uuid)
+returns void language plpgsql security definer set search_path = public as $$
+declare
+  it record;
+  current_status text;
+begin
+  if not public.is_admin() then
+    raise exception 'Apenas administradores podem cancelar pedidos';
+  end if;
+  select status into current_status from public.orders where id = p_order_id;
+  if current_status is null then raise exception 'Pedido não encontrado'; end if;
+  if current_status in ('Cancelado','Concluído') then
+    raise exception 'Pedido não pode ser cancelado no status atual (%)', current_status;
+  end if;
+  for it in select book_id, quantity from public.order_items where order_id = p_order_id loop
+    update public.books set stock = stock + it.quantity where id = it.book_id;
+  end loop;
+  update public.orders set status = 'Cancelado' where id = p_order_id;
+end;
+$$;
+grant execute on function public.cancel_order(uuid) to authenticated;
+
+alter table public.profiles    enable row level security;
+alter table public.books       enable row level security;
+alter table public.orders      enable row level security;
+alter table public.order_items enable row level security;
+alter table public.audit_logs  enable row level security;
+
+drop policy if exists "profiles self read"   on public.profiles;
+drop policy if exists "profiles admin read"  on public.profiles;
+drop policy if exists "profiles self update" on public.profiles;
+create policy "profiles self read"   on public.profiles for select to authenticated using (auth.uid() = id);
+create policy "profiles admin read"  on public.profiles for select to authenticated using (public.is_admin());
+create policy "profiles self update" on public.profiles for update to authenticated using (auth.uid() = id) with check (auth.uid() = id);
+
+drop policy if exists "books public read" on public.books;
+drop policy if exists "books admin write" on public.books;
+create policy "books public read" on public.books for select to anon, authenticated using (true);
+create policy "books admin write" on public.books for all  to authenticated using (public.is_admin()) with check (public.is_admin());
+
+drop policy if exists "orders owner read"  on public.orders;
+drop policy if exists "orders admin read"  on public.orders;
+drop policy if exists "orders admin write" on public.orders;
+create policy "orders owner read"  on public.orders for select to authenticated using (user_id = auth.uid());
+create policy "orders admin read"  on public.orders for select to authenticated using (public.is_admin());
+create policy "orders admin write" on public.orders for update to authenticated using (public.is_admin()) with check (public.is_admin());
+
+drop policy if exists "order_items owner read" on public.order_items;
+drop policy if exists "order_items admin read" on public.order_items;
+create policy "order_items owner read" on public.order_items for select to authenticated
+  using (exists (select 1 from public.orders o where o.id = order_id and o.user_id = auth.uid()));
+create policy "order_items admin read" on public.order_items for select to authenticated using (public.is_admin());
+
+drop policy if exists "audit authenticated insert" on public.audit_logs;
+drop policy if exists "audit admin read"           on public.audit_logs;
+create policy "audit authenticated insert" on public.audit_logs for insert to authenticated with check (true);
+create policy "audit admin read"           on public.audit_logs for select to authenticated using (public.is_admin());
+
+insert into public.books (title, author, category, price, stock, color, description) values
+('O Pequeno Príncipe','Antoine de Saint-Exupéry','Literatura',34.90,12,'#a95e49','Uma história sensível sobre amizade, afeto e o essencial.'),
+('Hábitos Atômicos','James Clear','Desenvolvimento',49.90,8,'#d0a24d','Pequenas mudanças podem produzir resultados extraordinários.'),
+('Dom Casmurro','Machado de Assis','Clássicos',29.90,10,'#416b65','Um dos romances mais conhecidos da literatura brasileira.'),
+('O Hobbit','J. R. R. Tolkien','Fantasia',44.90,6,'#526b91','Uma jornada inesperada por terras fantásticas.'),
+('A Revolução dos Bichos','George Orwell','Ficção',32.50,9,'#a184b8','Uma fábula sobre poder, sociedade e liberdade.'),
+('Mindset','Carol S. Dweck','Desenvolvimento',42.00,7,'#416b65','Descubra como a mentalidade influencia o aprendizado.'),
+('Capitães da Areia','Jorge Amado','Literatura',37.90,5,'#a95e49','Um retrato marcante da infância e da desigualdade.'),
+('O Universo numa Casca de Noz','Stephen Hawking','Ciência',55.00,4,'#526b91','Uma viagem acessível pelas grandes questões do cosmos.')
+on conflict (title) do nothing;
+
+-- Para criar um admin após cadastrar-se no site:
+-- update public.profiles set role='admin'
+-- where id = (select id from auth.users where email='SEU_EMAIL@exemplo.com');
+`;
+
+/* ============ UTILITÁRIOS ============ */
+function notify(msg) {
+  const t = $("toast");
+  t.textContent = msg;
+  t.classList.remove("hidden");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.add("hidden"), 3400);
+}
+
+function handleSupabaseError(error, context) {
+  if (!error) return;
+  const code = error.code || "";
+  const msg  = (error.message || "").toLowerCase();
+  console.error(`[${context}]`, error);
+
+  if (code === "42501" || msg.includes("row-level security")) {
+    notify(`Acesso negado: você não tem permissão para ${context}.`);
+    logAction("ACESSO_NEGADO", context);
+  } else if (code === "23514" || msg.includes("check constraint") || msg.includes("violates check")) {
+    notify("Dados inválidos (validação do banco).");
+  } else if (code === "23505" || msg.includes("duplicate key")) {
+    notify("Registro duplicado.");
+  } else if (code === "PGRST116") {
+    notify("Recurso não encontrado.");
+  } else if (msg.includes("apenas administradores")) {
+    notify("Acesso negado: apenas administradores.");
+  } else if (msg.includes("pedido não pode ser cancelado")) {
+    notify(error.message);
+  } else {
+    notify("Erro: " + (error.message || "desconhecido"));
+  }
+}
+
+async function logAction(action, details = "") {
+  if (!currentUser) return;
+  try {
+    await sb.from("audit_logs").insert({
+      user_id: currentUser.id, user_email: currentUser.email,
+      role: currentUser.role, action, details: String(details).slice(0, 160)
+    });
+  } catch (e) { console.warn("Falha ao registrar log:", e); }
+}
+
+async function logAnon(action, email, details) {
+  try {
+    await sb.rpc("log_anon_event", { p_action: action, p_email: email || null, p_details: details || "" });
+  } catch (e) { console.warn("Falha no log anônimo:", e); }
+}
+
+const currentIsAdmin = () => currentUser?.role === "admin";
+function requireLogin() {
+  if (!currentUser) { notify("Entre na sua conta para continuar."); openAuth("login"); return false; }
+  return true;
+}
+function requireAdmin() {
+  if (!currentIsAdmin()) {
+    notify("Acesso negado: somente administradores.");
+    logAction("ACESSO_NEGADO", "Tentativa de acessar função administrativa");
+    return false;
+  }
+  return true;
+}
+function isTableMissing(error) {
+  if (!error) return false;
+  const code = error.code || "";
+  const msg  = (error.message || "").toLowerCase();
+  return code === "42P01" || msg.includes("does not exist") || msg.includes("relation") || code === "PGRST205";
+}
+function passwordStrong(pw) {
+  return pw.length >= 8 && /[A-Za-z]/.test(pw) && /\d/.test(pw);
+}
+/* ============ MENU DE PERFIL ============ */
+function toggleProfileMenu(e) {
+  e.stopPropagation();
+  const menu = $("profileMenu");
+  const btn = e.currentTarget;
+  const isOpen = menu.classList.toggle("open");
+  btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+}
+function closeProfileMenu() {
+  const menu = $("profileMenu");
+  if (menu) menu.classList.remove("open");
+  const btn = document.querySelector(".profile-btn");
+  if (btn) btn.setAttribute("aria-expanded", "false");
+}
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".profile-wrap")) closeProfileMenu();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeProfileMenu();
+});
+/* ============ MODAL DE SETUP ============ */
+function showSetup() {
+  $("modalRoot").innerHTML = `<div class="modal-backdrop" onclick="if(event.target===this)closeModal()"><div class="modal wide">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2>Configuração do banco</h2>
+    <p class="muted">Cole o SQL abaixo no <strong>SQL Editor</strong> do seu projeto Supabase e clique em <strong>Run</strong>. Depois recarregue esta página.</p>
+    <div class="notice warn">
+      <strong>Passos:</strong><br>
+      1. Abra <em>https://supabase.com/dashboard/project/tvsqsnscoarjagqvxugd/sql/new</em><br>
+      2. Cole o SQL e execute.<br>
+      3. (Opcional) Desative a confirmação de e-mail em <em>Authentication → Providers → Email</em>.<br>
+      4. Crie uma conta pelo site e promova-a a admin com o <code>UPDATE</code> ao final do script.
+    </div>
+    <pre class="sql" id="setupSql">${safe(SETUP_SQL)}</pre>
+    <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <button class="btn gold" onclick="copySetup()">Copiar SQL</button>
+      <button class="btn ghost" onclick="closeModal()">Fechar</button>
+    </div>
+  </div></div>`;
+}
+async function copySetup() {
+  try { await navigator.clipboard.writeText(SETUP_SQL); notify("SQL copiado!"); }
+  catch (e) {
+    const el = $("setupSql"), range = document.createRange();
+    range.selectNodeContents(el);
+    const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    notify("Selecione manualmente e copie (Ctrl+C).");
+  }
+}
+
+/* ============ AUTH ============ */
+function openAuth(mode) {
+  const isRegister = mode === "register";
+  $("modalRoot").innerHTML = `<div class="modal-backdrop" onclick="if(event.target===this)closeModal()"><div class="modal">
+    <button class="close" onclick="closeModal()">×</button><h2>${isRegister ? "Criar conta" : "Bem-vindo de volta"}</h2>
+    <p class="muted">${isRegister ? "Cadastre-se para acompanhar seus pedidos." : "Entre para comprar e acompanhar seus pedidos."}</p>
+    <form onsubmit="${isRegister ? "registerUser(event)" : "loginUser(event)"}">
+      ${isRegister ? '<div class="form-row"><label>Nome completo</label><input id="authName" class="field" required maxlength="70" autocomplete="name" style="width:100%"></div>' : ""}
+      <div class="form-row"><label>E-mail</label><input id="authEmail" class="field" type="email" required maxlength="120" autocomplete="email" style="width:100%"></div>
+      <div class="form-row"><label>Senha</label><input id="authPassword" class="field" type="password" required minlength="8" maxlength="72" autocomplete="${isRegister ? "new-password" : "current-password"}" style="width:100%"></div>
+      ${isRegister ? '<div class="notice">A senha deve ter pelo menos 8 caracteres, contendo letras e números.</div>' : ""}
+      <button class="btn" style="width:100%" type="submit">${isRegister ? "Cadastrar" : "Entrar"}</button>
+    </form>
+    <p class="muted" style="font-size:13px;margin-top:16px">${isRegister
+      ? 'Já tem conta? <a href="#" onclick="openAuth(\'login\');return false">Entrar</a>'
+      : 'Não tem conta? <a href="#" onclick="openAuth(\'register\');return false">Cadastre-se</a>'}</p>
+  </div></div>`;
+}
+function closeModal() { $("modalRoot").innerHTML = ""; }
+/* ============ ALTERAR SENHA ============ */
+function openChangePassword() {
+  if (!requireLogin()) return;
+  $("modalRoot").innerHTML = `<div class="modal-backdrop" onclick="if(event.target===this)closeModal()"><div class="modal">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2>Alterar senha</h2>
+    <p class="muted">Defina uma nova senha para sua conta.</p>
+    <form onsubmit="changePassword(event)">
+      <div class="form-row"><label>Senha atual</label>
+        <input id="cpCurrent" class="field" type="password" required maxlength="72" autocomplete="current-password" style="width:100%">
+      </div>
+      <div class="form-row"><label>Nova senha</label>
+        <input id="cpNew" class="field" type="password" required minlength="8" maxlength="72" autocomplete="new-password" style="width:100%">
+      </div>
+      <div class="form-row"><label>Confirmar nova senha</label>
+        <input id="cpConfirm" class="field" type="password" required minlength="8" maxlength="72" autocomplete="new-password" style="width:100%">
+      </div>
+      <div class="notice">A senha deve ter pelo menos 8 caracteres, contendo letras e números.</div>
+      <button class="btn" style="width:100%" type="submit">Salvar nova senha</button>
+    </form>
+    <p class="muted" style="font-size:13px;margin-top:16px">
+      <a href="#" onclick="openForgotPassword();return false">Esqueci minha senha atual</a>
+    </p>
+  </div></div>`;
+}
+
+async function changePassword(e) {
+  e.preventDefault();
+  if (!currentUser) return;
+  const currentPw = $("cpCurrent").value;
+  const newPw = $("cpNew").value;
+  const confirmPw = $("cpConfirm").value;
+
+  if (!passwordStrong(newPw)) {
+    notify("Senha fraca: use 8+ caracteres, com letras e números.");
+    return;
+  }
+  if (newPw !== confirmPw) {
+    notify("As senhas novas não coincidem.");
+    return;
+  }
+  if (newPw === currentPw) {
+    notify("A nova senha deve ser diferente da atual.");
+    return;
+  }
+
+  // Reautentica para confirmar a senha atual (segurança)
+  const { error: signInErr } = await sb.auth.signInWithPassword({
+    email: currentUser.email,
+    password: currentPw
+  });
+  if (signInErr) {
+    notify("Senha atual incorreta.");
+    logAction("SENHA_ALTERACAO_FALHOU", "Senha atual incorreta");
+    return;
+  }
+
+  const { error } = await sb.auth.updateUser({ password: newPw });
+  if (error) {
+    handleSupabaseError(error, "alterar senha");
+    return;
+  }
+
+  await logAction("SENHA_ALTERADA", "Senha alterada pelo próprio usuário");
+  closeModal();
+  notify("Senha alterada com sucesso.");
+}
+async function openForgotPassword() {
+  const email = currentUser?.email || prompt("Digite seu e-mail para receber o link de recuperação:");
+  if (!email) return;
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin
+  });
+  if (error) { notify("Erro: " + error.message); return; }
+  logAction("RECUPERACAO_SENHA_SOLICITADA", email.slice(0, 60));
+  notify("Se o e-mail existir, você receberá um link de recuperação.");
+}
+async function registerUser(e) {
+  e.preventDefault();
+  const name = $("authName").value.trim();
+  const email = $("authEmail").value.trim().toLowerCase();
+  const password = $("authPassword").value;
+  if (name.length < 2 || name.length > 70) { notify("Nome deve ter entre 2 e 70 caracteres."); return; }
+  if (!email.includes("@") || email.length > 120) { notify("E-mail inválido."); return; }
+  if (!passwordStrong(password)) {
+    notify("Senha fraca: use 8+ caracteres, com letras e números."); return;
+  }
+  const { data, error } = await sb.auth.signUp({ email, password, options: { data: { name } } });
+  if (error) { notify("Erro: " + error.message); return; }
+  if (!data.session) {
+    notify("Conta criada! Confirme o e-mail para entrar.");
+    closeModal();
+    return;
+  }
+  await setUserFromSession(data.session);
+  await logAction("CADASTRO_USUARIO", "Nova conta de cliente");
+  closeModal(); updateUI(); notify("Conta criada e logada!");
+}
+
+async function loginUser(e) {
+  e.preventDefault();
+  const email = $("authEmail").value.trim().toLowerCase();
+  const password = $("authPassword").value;
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    await logAnon("LOGIN_FALHOU", email, "Tentativa de login com credenciais inválidas");
+    notify("E-mail ou senha incorretos.");
+    return;
+  }
+  await setUserFromSession(data.session);
+  logAction("LOGIN_SUCESSO", "Sessão iniciada");
+  closeModal(); updateUI(); notify("Login realizado!");
+}
+
+async function logout() {
+  logAction("LOGOUT", "Sessão encerrada");
+  await sb.auth.signOut();
+  currentUser = null; cart = {}; updateUI(); notify("Você saiu da conta.");
+}
+
+async function setUserFromSession(session) {
+  if (!session) { currentUser = null; return; }
+  const { data: profile, error } = await sb.from("profiles")
+    .select("name, role").eq("id", session.user.id).maybeSingle();
+  if (error && isTableMissing(error)) { currentUser = null; showSetup(); return; }
+  currentUser = {
+    id: session.user.id, email: session.user.email,
+    name: profile?.name || session.user.user_metadata?.name || session.user.email,
+    role: profile?.role || "customer"
+  };
+}
+
+/* ============ CATÁLOGO ============ */
+async function loadBooks() {
+  const { data, error } = await sb.from("books").select("*").order("created_at", { ascending: false });
+  if (error) {
+    if (isTableMissing(error)) { showSetup(); return; }
+    handleSupabaseError(error, "carregar livros"); return;
+  }
+  dbReady = true;
+  booksCache = data;
+  refreshCategories(); renderCatalog();
+}
+function refreshCategories() {
+  const sel = $("categoryFilter"), v = sel.value;
+  const cats = [...new Set(booksCache.map(b => b.category))].sort();
+  sel.innerHTML = '<option value="">Todas as categorias</option>' +
+    cats.map(c => `<option value="${safe(c)}">${safe(c)}</option>`).join("");
+  sel.value = cats.includes(v) ? v : "";
+}
+function renderCatalog() {
+  const q = $("searchInput").value.toLowerCase().trim();
+  const cat = $("categoryFilter").value;
+  const books = booksCache.filter(b =>
+    (!cat || b.category === cat) && [b.title, b.author, b.category].join(" ").toLowerCase().includes(q));
+  $("catalog").innerHTML = books.length
+    ? books.map(b => `<article class="book-card">
+        <div class="cover"><div class="cover-inner" style="background:${safe(b.color)}">${safe(b.title)}</div></div>
+        <div class="book-info">
+          <span class="tag">${safe(b.category)}</span>
+          <h3>${safe(b.title)}</h3>
+          <div class="author">por ${safe(b.author)}</div>
+          <div class="description">${safe(b.description || "Uma ótima leitura para sua coleção.")}</div>
+          <div class="price-row">
+            <span class="price">${money(b.price)}</span>
+            <span class="stock">${b.stock > 0 ? b.stock + " em estoque" : "Esgotado"}</span>
+          </div>
+          <button class="btn" ${b.stock < 1 ? "disabled" : ""} onclick="addToCart('${b.id}')">${b.stock > 0 ? "Adicionar ao carrinho" : "Indisponível"}</button>
+        </div></article>`).join("")
+    : '<div class="empty">Nenhum livro encontrado. Tente outra busca.</div>';
+}
+
+/* ============ CARRINHO ============ */
+function addToCart(id) {
+  const b = booksCache.find(x => x.id === id);
+  if (!b || b.stock <= 0) return notify("Livro indisponível.");
+  cart[id] = (cart[id] || 0) + 1;
+  if (cart[id] > b.stock) { cart[id] = b.stock; notify("Quantidade máxima atingida."); }
+  else notify("Livro adicionado ao carrinho.");
+  updateCartCount();
+}
+function updateCartCount() {
+  const total = Object.values(cart).reduce((a, b) => a + b, 0);
+
+  // atualiza contador do topo
+  $("cartCount").textContent = total;
+
+  // atualiza ícone flutuante
+  const btn = $("floatingCart");
+  const badge = $("floatingCartCount");
+  if (badge) badge.textContent = total;
+
+  if (btn) {
+    // mostra o botão quando houver itens no carrinho
+    btn.classList.toggle("visible", total > 0);
+
+    // animação "pop" quando a quantidade aumenta
+    if (total > lastCartTotal) {
+      btn.classList.remove("pop");
+      void btn.offsetWidth; // força reinício da animação
+      btn.classList.add("pop");
+    }
+  }
+
+  lastCartTotal = total;
+}
+
+function openCart() {
+  const lines = Object.entries(cart).filter(([, q]) => q > 0)
+    .map(([id, q]) => ({ book: booksCache.find(b => b.id === id), q }))
+    .filter(x => x.book);
+  const total = lines.reduce((s, x) => s + x.book.price * x.q, 0);
+  $("modalRoot").innerHTML = `<div class="modal-backdrop" onclick="if(event.target===this)closeModal()"><div class="modal">
+    <button class="close" onclick="closeModal()">×</button><h2>Seu carrinho</h2>
+    ${lines.length ? lines.map(x => `<div class="cart-line">
+        <div><strong>${safe(x.book.title)}</strong><small>${x.q} × ${money(x.book.price)}</small></div>
+        <div style="text-align:right">
+          <strong>${money(x.q * x.book.price)}</strong><br>
+          <button class="btn ghost small" onclick="changeCart('${x.book.id}',-1)">−</button>
+          <button class="btn ghost small" onclick="changeCart('${x.book.id}',1)">+</button>
+          <button class="btn ghost small" onclick="removeCart('${x.book.id}')">Remover</button>
+        </div></div>`).join("") : '<div class="empty">Seu carrinho está vazio.</div>'}
+    <div class="cart-total"><span>Total</span><span>${money(total)}</span></div>
+    <button class="btn" style="width:100%" ${!lines.length ? "disabled" : ""} onclick="checkout()">Finalizar pedido</button>
+    <p class="muted" style="font-size:11px">Demonstração acadêmica: não há cobrança ou pagamento real.</p>
+  </div></div>`;
+}
+function changeCart(id, d) {
+  const b = booksCache.find(x => x.id === id); if (!b) return;
+  cart[id] = Math.max(0, Math.min(b.stock, (cart[id] || 0) + d));
+  if (!cart[id]) delete cart[id];
+  openCart(); updateCartCount();
+}
+function removeCart(id) { delete cart[id]; openCart(); updateCartCount(); }
+
+async function checkout() {
+  if (!requireLogin()) return;
+  const items = Object.entries(cart).filter(([, q]) => q > 0).map(([id, quantity]) => {
+    const book = booksCache.find(b => b.id === id);
+    return { book_id: id, quantity, price: book.price };
+  });
+  if (!items.length) return notify("Carrinho vazio.");
+  const { data, error } = await sb.rpc("create_order", { items });
+  if (error) { handleSupabaseError(error, "finalizar pedido"); return; }
+  await logAction("PEDIDO_CRIADO", String(data).slice(0,8) + " — " + money(items.reduce((s, i) => s + i.price * i.quantity, 0)));
+  cart = {}; updateCartCount(); closeModal();
+  await loadBooks(); await loadMyOrders();
+  notify("Pedido criado! ID: " + String(data).slice(0, 8));
+}
+
+/* ============ MEUS PEDIDOS ============ */
+async function loadMyOrders() {
+  if (!currentUser || currentIsAdmin()) { $("myOrders").innerHTML = ""; return; }
+  const { data, error } = await sb.from("orders")
+    .select("id, status, total, created_at, order_items(quantity)")
+    .eq("user_id", currentUser.id).order("created_at", { ascending: false });
+  if (error) { $("myOrders").innerHTML = '<p class="muted">Erro ao carregar pedidos.</p>'; return; }
+  $("myOrders").innerHTML = data.length
+    ? `<div class="table-wrap"><table><thead><tr>
+         <th>Pedido</th><th>Data</th><th>Itens</th><th>Total</th><th>Status</th><th>Ação</th>
+       </tr></thead><tbody>${data.map(o => {
+         const podeCancelar = o.status === "Recebido";
+         return `<tr>
+           <td>${safe(String(o.id).slice(0, 8))}</td>
+           <td>${new Date(o.created_at).toLocaleString("pt-BR")}</td>
+           <td>${(o.order_items || []).reduce((s, i) => s + i.quantity, 0)}</td>
+           <td>${money(o.total)}</td>
+           <td><span class="tag">${safe(o.status)}</span></td>
+           <td>${podeCancelar
+             ? `<button class="btn danger small" onclick="cancelMyOrder('${o.id}')">Cancelar</button>`
+             : '<span class="muted" style="font-size:11px">—</span>'}
+           </td>
+         </tr>`;
+       }).join("")}</tbody></table></div>`
+    : '<p class="muted">Você ainda não realizou pedidos.</p>';
+}
+async function cancelMyOrder(orderId) {
+  if (!requireLogin()) return;
+  if (!confirm("Cancelar este pedido? O estoque dos itens será devolvido.")) return;
+
+  const { error } = await sb.rpc("cancel_own_order", { p_order_id: orderId });
+  if (error) { handleSupabaseError(error, "cancelar pedido"); return; }
+
+  await logAction("PEDIDO_CANCELADO_PELO_CLIENTE", String(orderId).slice(0, 8));
+  await loadBooks();
+  await loadMyOrders();
+  notify("Pedido cancelado.");
+}
+
+/* ============ ADMIN ============ */
+function showAdminTab(tab) {
+  if (!requireAdmin()) return;
+  ["books", "orders", "users", "logs"].forEach(t =>
+    $("admin" + t[0].toUpperCase() + t.slice(1)).classList.toggle("hidden", t !== tab));
+  document.querySelectorAll("[data-tab]").forEach(b =>
+    b.classList.toggle("active", b.dataset.tab === tab));
+  if (tab === "orders") loadAllOrders();
+  if (tab === "users")  loadAllUsers();
+  if (tab === "logs")   loadLogs();
+}
+async function renderAdmin() {
+  if (!requireAdmin()) return;
+  $("adminBookTable").innerHTML = booksCache.length
+    ? `<table><thead><tr><th>Livro</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr></thead><tbody>${booksCache.map(b => `<tr>
+        <td>${safe(b.title)}</td><td>${money(b.price)}</td><td>${b.stock}</td>
+        <td><div class="admin-actions">
+          <button class="btn ghost small" onclick="editBook('${b.id}')">Editar</button>
+          <button class="btn danger small" onclick="deleteBook('${b.id}')">Excluir</button>
+        </div></td></tr>`).join("")}</tbody></table>`
+    : '<p class="muted">Nenhum livro cadastrado.</p>';
+}
+
+async function saveBook(e) {
+  e.preventDefault();
+  if (!requireAdmin()) return;
+  const id = $("bookId").value;
+  const title = $("bookTitle").value.trim();
+  const author = $("bookAuthor").value.trim();
+  const category = $("bookCategory").value.trim();
+  const price = Number($("bookPrice").value);
+  const stock = Number($("bookStock").value);
+  const color = $("bookColor").value;
+  const description = $("bookDescription").value.trim();
+
+  if (!title || title.length > 100)        { notify("Título inválido (1–100 caracteres)."); return; }
+  if (!author || author.length > 80)        { notify("Autor inválido (1–80 caracteres)."); return; }
+  if (!category || category.length > 40)    { notify("Categoria inválida (1–40 caracteres)."); return; }
+  if (!Number.isFinite(price) || price <= 0 || price > 99999) { notify("Preço inválido (0,01–99.999)."); return; }
+  if (!Number.isInteger(stock) || stock < 0 || stock > 100000) { notify("Estoque inválido (0–100.000)."); return; }
+  if (description.length > 250)             { notify("Descrição excede 250 caracteres."); return; }
+
+  const data = { title, author, category, price, stock, color, description };
+  let error;
+  if (id) ({ error } = await sb.from("books").update(data).eq("id", id));
+  else    ({ error } = await sb.from("books").insert(data));
+  if (error) { handleSupabaseError(error, "salvar livro"); return; }
+
+  await logAction(id ? "LIVRO_EDITADO" : "LIVRO_CADASTRADO", title);
+  resetBookForm(); await loadBooks(); await renderAdmin(); notify("Livro salvo!");
+}
+function editBook(id) {
+  if (!requireAdmin()) return;
+  const b = booksCache.find(x => x.id === id); if (!b) return;
+  $("bookId").value = b.id;
+  $("bookTitle").value = b.title;
+  $("bookAuthor").value = b.author;
+  $("bookCategory").value = b.category;
+  $("bookPrice").value = b.price;
+  $("bookStock").value = b.stock;
+  $("bookDescription").value = b.description || "";
+  $("bookColor").value = b.color;
+  $("bookFormTitle").textContent = "Editar livro";
+  $("bookForm").scrollIntoView({ behavior: "smooth" });
+}
+function resetBookForm() {
+  $("bookForm").reset(); $("bookId").value = "";
+  $("bookFormTitle").textContent = "Cadastrar livro";
+}
+async function deleteBook(id) {
+  if (!requireAdmin()) return;
+  const b = booksCache.find(x => x.id === id);
+  if (!b || !confirm("Excluir o livro “" + b.title + "”?")) return;
+  const { error } = await sb.from("books").delete().eq("id", id);
+  if (error) { handleSupabaseError(error, "excluir livro"); return; }
+  await logAction("LIVRO_EXCLUIDO", b.title);
+  await loadBooks(); await renderAdmin(); notify("Livro excluído.");
+}
+async function loadAllOrders() {
+  if (!requireAdmin()) return;
+  const { data, error } = await sb.from("orders")
+    .select(`
+      id, status, total, created_at,
+      profiles(name),
+      order_items(quantity, unit_price, books(title))
+    `)
+    .order("created_at", { ascending: false });
+  if (error) { $("allOrders").innerHTML = '<p class="muted">Erro ao carregar pedidos.</p>'; return; }
+  const allowed = ["Recebido", "Em preparação", "Enviado", "Concluído", "Cancelado"];
+  $("allOrders").innerHTML = data.length
+    ? `<table><thead><tr>
+        <th>Pedido</th><th>Cliente</th><th>Data</th><th>Itens</th><th>Total</th><th>Status</th><th>Ação</th>
+      </tr></thead><tbody>${data.map(o => {
+        const itens = (o.order_items || [])
+          .map(i => `${i.quantity}× ${safe(i.books?.title || "?")}`)
+          .join("<br>") || "-";
+        const locked = o.status === "Cancelado" || o.status === "Concluído";
+        return `<tr>
+          <td>${safe(String(o.id).slice(0, 8))}</td>
+          <td>${safe(o.profiles?.name || "-")}</td>
+          <td>${new Date(o.created_at).toLocaleString("pt-BR")}</td>
+          <td class="items-cell">${itens}</td>
+          <td>${money(o.total)}</td>
+          <td><span class="tag">${safe(o.status)}</span></td>
+          <td><select class="field" style="padding:6px"
+                onchange="changeOrderStatus('${o.id}', this.value)"
+                ${locked ? "disabled" : ""}>
+            ${allowed.map(s => `<option ${s === o.status ? "selected" : ""}>${s}</option>`).join("")}
+          </select></td>
+        </tr>`;
+      }).join("")}</tbody></table>`
+    : '<p class="muted">Nenhum pedido realizado.</p>';
+}
+async function changeOrderStatus(id, status) {
+  if (!requireAdmin()) return;
+  const allowed = ["Recebido", "Em preparação", "Enviado", "Concluído", "Cancelado"];
+  if (!allowed.includes(status)) { notify("Status inválido."); return; }
+
+  if (status === "Cancelado") {
+    if (!confirm("Cancelar este pedido? O estoque dos itens será devolvido.")) {
+      await loadAllOrders();
+      return;
+    }
+    const { error } = await sb.rpc("cancel_order", { p_order_id: id });
+    if (error) { handleSupabaseError(error, "cancelar pedido"); await loadAllOrders(); return; }
+  } else {
+    const { error } = await sb.from("orders").update({ status }).eq("id", id);
+    if (error) { handleSupabaseError(error, "alterar status"); await loadAllOrders(); return; }
+  }
+
+  await logAction("STATUS_PEDIDO_ALTERADO", id.slice(0, 8) + " → " + status);
+  await loadBooks();
+  await loadAllOrders();
+  notify("Status atualizado.");
+}
+
+async function loadAllUsers() {
+  if (!requireAdmin()) return;
+  const { data, error } = await sb.from("profiles")
+    .select("name, role, created_at, id").order("created_at", { ascending: false });
+  if (error) { $("allUsers").innerHTML = '<p class="muted">Erro ao carregar usuários.</p>'; return; }
+  $("allUsers").innerHTML = `<table><thead><tr><th>Nome</th><th>ID</th><th>Perfil</th><th>Cadastro</th><th>Ação</th></tr></thead><tbody>${data.map(u => `<tr>
+      <td>${safe(u.name)}</td>
+      <td>${safe(String(u.id).slice(0, 8))}</td>
+      <td><span class="tag ${u.role === "admin" ? "admin" : "customer"}">${u.role === "admin" ? "Administrador" : "Cliente"}</span></td>
+      <td>${new Date(u.created_at).toLocaleDateString("pt-BR")}</td>
+      <td>${u.id === currentUser.id
+        ? '<span class="muted" style="font-size:11px">(você)</span>'
+        : `<button class="btn ghost small" onclick="toggleRole('${u.id}','${u.role}')">${u.role === "admin" ? "Rebaixar" : "Promover a admin"}</button>`}
+      </td></tr>`).join("")}</tbody></table>`;
+}
+async function toggleRole(userId, currentRole) {
+  if (!requireAdmin()) return;
+  const newRole = currentRole === "admin" ? "customer" : "admin";
+  if (!confirm(`Alterar perfil para "${newRole}"?`)) return;
+  const { error } = await sb.rpc("promote_user_by_id", { p_user_id: userId, p_role: newRole });
+  if (error) { handleSupabaseError(error, "alterar perfil"); return; }
+  await logAction("PERFIL_ALTERADO", userId.slice(0, 8) + " → " + newRole);
+  notify("Perfil atualizado."); loadAllUsers();
+}
+
+async function loadLogs() {
+  if (!requireAdmin()) return;
+  const { data, error } = await sb.from("audit_logs").select("*")
+    .order("created_at", { ascending: false }).limit(200);
+  if (error) { $("auditTable").innerHTML = '<p class="muted">Erro ao carregar logs.</p>'; return; }
+  $("auditTable").innerHTML = data.length
+    ? `<table><thead><tr><th>Data</th><th>Usuário</th><th>Perfil</th><th>Ação</th><th>Detalhes</th></tr></thead><tbody>${data.map(l => `<tr>
+        <td>${new Date(l.created_at).toLocaleString("pt-BR")}</td>
+        <td>${safe(l.user_email || "-")}</td>
+        <td>${safe(l.role || "-")}</td>
+        <td>${safe(l.action)}</td>
+        <td>${safe(l.details || "")}</td>
+      </tr>`).join("")}</tbody></table>`
+    : '<p class="muted">Ainda não há ações registradas.</p>';
+}
+
+/* ============ UI ============ */
+function updateUI() {
+  const logged = !!currentUser;
+
+  // Status textual (visitante)
+  $("accountStatus").textContent = logged
+    ? ""  // quando logado, o nome aparece no menu de perfil
+    : "Você está navegando como visitante";
+  $("accountStatus").classList.toggle("hidden", logged);
+
+  // Botões de visitante
+  $("loginBtn").classList.toggle("hidden", logged);
+  $("registerBtn").classList.toggle("hidden", logged);
+
+  // Menu de perfil
+  $("profileWrap").classList.toggle("hidden", !logged);
+  if (logged) {
+    const name = currentUser.name || currentUser.email || "Usuário";
+    $("profileName").textContent = name.length > 18 ? name.slice(0, 17) + "…" : name;
+    $("profileInitial").textContent = (name.trim()[0] || "?").toUpperCase();
+    $("pmName").textContent = name;
+    $("pmEmail").textContent = currentUser.email || "";
+    $("pmRole").textContent = currentIsAdmin() ? "Administrador" : "Cliente";
+    closeProfileMenu();
+  }
+
+  // Áreas administrativas / pedidos
+  $("adminSection").classList.toggle("hidden", !currentIsAdmin());
+  $("myOrdersSection").classList.toggle("hidden", !logged || currentIsAdmin());
+
+  updateCartCount();
+  loadMyOrders();
+  if (currentIsAdmin()) {
+    renderAdmin(); loadAllOrders(); loadAllUsers(); loadLogs();
+  }
+}
+
+/* ============ BOOT ============ */
+(async function init() {
+  try {
+    const { data: { session } } = await sb.auth.getSession();
+    await setUserFromSession(session);
+
+    sb.auth.onAuthStateChange(async (event, session) => {
+      if (event === "SIGNED_OUT" && currentUser) {
+        notify("Sessão encerrada. Faça login novamente.");
+      }
+      if (event === "TOKEN_REFRESHED") return;
+      await setUserFromSession(session);
+      updateUI();
+    });
+
+    await loadBooks();
+    updateUI();
+
+    if (!dbReady) setTimeout(showSetup, 800);
+  } catch (e) {
+    console.error("Falha na inicialização:", e);
+    notify("Erro ao iniciar. Verifique a conexão com o Supabase.");
+  }
+})();
+</script>
+</body>
+</html>
